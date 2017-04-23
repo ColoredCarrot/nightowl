@@ -1,0 +1,4 @@
+version: 1.0.0
+main: com.coloredcarrot.nightowl.NightOwlPlugin
+name: NightOwl
+author: ColoredCarrot
