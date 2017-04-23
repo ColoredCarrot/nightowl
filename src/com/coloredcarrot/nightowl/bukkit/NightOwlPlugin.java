@@ -41,7 +41,10 @@ public class NightOwlPlugin extends JavaPlugin implements NightOwl
 	
 	private void registerApplicableCommands()
 	{
+		
 		cmdExecutor.registerCommand(new CommandTeleport(this));
+		getCommand("teleport").setExecutor(cmdExecutor);
+		
 	}
 
 	@Override

@@ -1,4 +1,8 @@
 version: 1.0.0
-main: com.coloredcarrot.nightowl.spigot.NightOwlPlugin
+main: com.coloredcarrot.nightowl.bukkit.NightOwlPlugin
 name: NightOwl
 author: ColoredCarrot
+
+commands:
+  teleport:
+    aliases: tp
