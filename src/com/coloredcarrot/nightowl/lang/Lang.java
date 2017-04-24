@@ -20,6 +20,8 @@ public class Lang
 							   CMD_TARGETNOTFOUND		= "cmd.targetnotfound",
 							   CMD_DOUBLEERR			= "cmd.doubleerr",
 							   CMD_UNKNOWN				= "cmd.unknown",
+							   CMD_MISSINGFLAG_CONSOLE	= "cmd.missingflag.console",
+							   CMD_WORLDNOTFOUND		= "cmd.worldnotfound",
 							   
 							   CMD_TELEPORT_SUCCESS_TP	= "cmd.teleport.success.tp",
 							   CMD_TELEPORT_SUCCESS_PTP	= "cmd.teleport.success.ptp",

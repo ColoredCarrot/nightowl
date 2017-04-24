@@ -19,6 +19,6 @@ public interface Location
 	
 	public float getPitch();
 	
-	public String getWorld();
+	public World getWorld();
 	
 }

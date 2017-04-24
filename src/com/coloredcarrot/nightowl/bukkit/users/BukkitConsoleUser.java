@@ -1,18 +1,11 @@
 package com.coloredcarrot.nightowl.bukkit.users;
 
-import java.util.logging.Logger;
+import org.bukkit.Bukkit;
 
 import com.coloredcarrot.nightowl.users.CommandUser;
 
 public class BukkitConsoleUser implements CommandUser
 {
-	
-	private final Logger log;
-
-	public BukkitConsoleUser(Logger log)
-	{
-		this.log = log;
-	}
 
 	@Override
 	public boolean hasPermission(String permission)
@@ -35,7 +28,13 @@ public class BukkitConsoleUser implements CommandUser
 	@Override
 	public void sendMessage(String m)
 	{
-		log.info(m);
+		Bukkit.getConsoleSender().sendMessage(m);
 	}
-
+	
+	@Override
+	public void sendMessage(String... m)
+	{
+		Bukkit.getConsoleSender().sendMessage(m);
+	}
+	
 }

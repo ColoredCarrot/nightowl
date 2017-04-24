@@ -126,6 +126,11 @@ public class CommandInfo
 			return this;
 		}
 		
+		public Builder argRangeCheck(int min, int max)
+		{
+			return argRangeCheck(n -> n >= min && n <= max);
+		}
+		
 	}
 	
 }

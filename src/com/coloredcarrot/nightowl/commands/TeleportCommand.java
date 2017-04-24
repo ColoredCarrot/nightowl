@@ -6,10 +6,10 @@ import com.coloredcarrot.nightowl.lib.DecimalFormats;
 import com.coloredcarrot.nightowl.users.CommandUser;
 import com.coloredcarrot.nightowl.users.HumanUser;
 
-public class CommandTeleport extends CommandAdapter
+public class TeleportCommand extends CommandAdapter
 {
 
-	public CommandTeleport(NightOwl nightowl)
+	public TeleportCommand(NightOwl nightowl)
 	{
 		super(buildInfo("teleport")
 			  .aliases		("tp")
@@ -73,9 +73,10 @@ public class CommandTeleport extends CommandAdapter
 			double z = args[3].equals("~") ? target.getLocation().getZ() : requireDouble(args[3]);
 			
 			target.setLocation(x, y, z);
-			target.sendMessage(lang(Lang.CMD_TELEPORT_SUCCESS_PTL, "%x%", DecimalFormats.DEFAULT.format(x),
-																   "%y%", DecimalFormats.DEFAULT.format(y),
-																   "%z%", DecimalFormats.DEFAULT.format(z)));
+			user.sendMessage(lang(Lang.CMD_TELEPORT_SUCCESS_PTL, "%x%", DecimalFormats.DEFAULT.format(x),
+																  "%y%", DecimalFormats.DEFAULT.format(y),
+																  "%z%", DecimalFormats.DEFAULT.format(z),
+																  "%teleporter%", target.getName()));
 			
 		}
 		else if (args.length == 5)

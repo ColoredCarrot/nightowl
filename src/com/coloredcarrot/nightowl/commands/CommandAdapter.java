@@ -33,17 +33,17 @@ public abstract class CommandAdapter extends Command
 		return lang.get(key, vars);
 	}
 	
-	protected void errInvalidArg(String[] m)
+	protected RuntimeException errInvalidArg(String[] m)
 	{
 		throw new ExecutionException(m);
 	}
 	
-	protected void errNonHuman()
+	protected RuntimeException errNonHuman()
 	{
 		throw new ExecutionException(lang(Lang.CMD_NONHUMAN));
 	}
 	
-	protected void errTargetNotFound(String supposedTargetName)
+	protected RuntimeException errTargetNotFound(String supposedTargetName)
 	{
 		throw new ExecutionException(lang(Lang.CMD_TARGETNOTFOUND, "%name%", supposedTargetName));
 	}
@@ -69,10 +69,30 @@ public abstract class CommandAdapter extends Command
 		catch (NumberFormatException e) { throw new ExecutionException(lang(Lang.CMD_DOUBLEERR, "%number%", arg)); }
 	}
 	
+	protected double requireDouble(String arg, double relativeTo)
+	{
+		if (arg.equals("~"))
+			return relativeTo;
+		else if (arg.startsWith("~"))
+			return requireDouble(arg.substring(1));
+		else
+			return requireDouble(arg);
+	}
+	
 	protected float requireFloat(String arg)
 	{
 		try { return Float.parseFloat(arg); }
 		catch (NumberFormatException e) { throw new ExecutionException(lang(Lang.CMD_DOUBLEERR, "%number%", arg)); }
+	}
+	
+	protected float requireFloat(String arg, float relativeTo)
+	{
+		if (arg.equals("~"))
+			return relativeTo;
+		else if (arg.startsWith("~"))
+			return requireFloat(arg.substring(1));
+		else
+			return requireFloat(arg);
 	}
 
 }

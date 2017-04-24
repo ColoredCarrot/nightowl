@@ -3,10 +3,9 @@ package com.coloredcarrot.nightowl.bukkit.users;
 import org.bukkit.entity.Player;
 
 import com.coloredcarrot.nightowl.bukkit.BukkitUtil;
-import com.coloredcarrot.nightowl.bukkit.world.BukkitLocation;
 import com.coloredcarrot.nightowl.users.HumanUser;
-import com.coloredcarrot.nightowl.users.PermissionSet;
 import com.coloredcarrot.nightowl.world.Location;
+import com.coloredcarrot.nightowl.world.World;
 
 public class BukkitPlayer implements HumanUser
 {
@@ -18,30 +17,29 @@ public class BukkitPlayer implements HumanUser
 	}
 	
 	private final Player player;
-	private PermissionSet permissions;
 	
 	private BukkitPlayer(Player player)
 	{
 		this.player = player;
-		this.permissions = new PermissionSet();
+		//this.permissions = new PermissionSet();
 	}
 
 	@Override
 	public boolean hasPermission(String permission)
 	{
-		return permissions.has(permission);
+		return player.hasPermission(permission);
 	}
 
 	@Override
 	public boolean givePermission(String permission)
 	{
-		return permissions.give(permission);
+		throw new IllegalStateException("NYI");
 	}
 
 	@Override
 	public boolean takePermission(String permission)
 	{
-		return permissions.take(permission);
+		throw new IllegalStateException("NYI");//TODO: implement taking and giving permissions
 	}
 
 	@Override
@@ -77,7 +75,13 @@ public class BukkitPlayer implements HumanUser
 	@Override
 	public Location getLocation()
 	{
-		return new BukkitLocation(player.getLocation());
+		return BukkitUtil.toLocation(player.getLocation());
+	}
+	
+	@Override
+	public World getWorld()
+	{
+		return BukkitUtil.toWorld(player.getWorld());
 	}
 
 	@Override

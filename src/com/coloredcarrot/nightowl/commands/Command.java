@@ -39,7 +39,7 @@ public abstract class Command
 	
 	public boolean checkPermission(PermissibleUser user)
 	{
-		return info.hasPermission() && user.hasPermission(info.getPermission());
+		return !info.hasPermission() || user.hasPermission(info.getPermission());
 	}
 	
 	public CommandInfo getInfo()

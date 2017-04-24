@@ -8,6 +8,7 @@ import org.bukkit.entity.Player;
 
 import com.coloredcarrot.nightowl.Server;
 import com.coloredcarrot.nightowl.users.HumanUser;
+import com.coloredcarrot.nightowl.world.World;
 
 public class BukkitServer implements Server
 {
@@ -36,6 +37,12 @@ public class BukkitServer implements Server
 	{
 		Player player = Bukkit.getPlayer(name);
 		return player != null ? BukkitUtil.toHumanUser(player) : null;
+	}
+	
+	@Override
+	public World getWorld(String name)
+	{
+		return BukkitUtil.toWorld(Bukkit.getWorld(name));
 	}
 
 }
